@@ -9,5 +9,6 @@ namespace CardioLibrary
 {
     public static class DataCardio
     {
+       
     }
 }
