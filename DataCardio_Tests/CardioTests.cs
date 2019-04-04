@@ -8,7 +8,7 @@ namespace DataCardio_Tests
     public class CardioTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestMethod1() 
         {
         }
     }
