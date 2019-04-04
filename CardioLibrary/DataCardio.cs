@@ -9,6 +9,13 @@ namespace CardioLibrary
 {
     public static class DataCardio
     {
-       
+        public static double fequenza1(double età)
+        { 
+
+            double risposta =  220 - età ;
+          
+            return risposta;
+        }
     }
+
 }

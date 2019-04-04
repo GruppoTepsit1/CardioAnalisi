@@ -11,7 +11,10 @@ namespace DataCardio_Tests
         [TestMethod]
         public void TestMethod1()
         {
-            int età = 0,  secondi = 0, battitiMin = 0, battitiMax=220 ;
+            double età = 20, frequenza=200;
+
+            double i = DataCardio.fequenza1(età);
+            Assert.AreEqual(frequenza, i);
         }
     }
 }
