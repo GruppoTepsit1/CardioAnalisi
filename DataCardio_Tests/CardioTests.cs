@@ -8,8 +8,11 @@ namespace DataCardio_Tests
     public class CardioTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public static int CalcoloFrequenzaCardiaca(int anni)
         {
+            int frequenza = 220;
+            frequenza = frequenza - anni;
+            return frequenza;
         }
     }
 }
