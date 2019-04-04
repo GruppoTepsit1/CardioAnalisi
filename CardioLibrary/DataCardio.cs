@@ -9,5 +9,11 @@ namespace CardioLibrary
 {
     public static class DataCardio 
     {
+        public static int CalcoloFrequenzaCardiaca(int anni)
+        {
+            int frequenza = 220;
+            frequenza = frequenza - anni;
+            return frequenza;
+        }
     }
 }
