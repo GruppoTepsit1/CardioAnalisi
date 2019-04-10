@@ -8,14 +8,14 @@ namespace DataCardio_Tests
     public class CardioTests
     {
         [TestMethod]
-        public void TestBattitoCardiaco1()
+        public void TestBattitoCardiaco()
         {
             int anni = 12;
             int valaspettato = 208;
 
-            int val = 0;
-            val = CardioTests.CalcoloFrequenzaCardiaca(anni);
-            Assert.AreEqual(valaspettato, val);
+            int finalvalue = 0;
+            finalvalue = DataCardio.CalcoloFrequenzaCardiaca(anni);
+            Assert.AreEqual(valaspettato, finalvalue);
         }
 
         [TestMethod]
@@ -24,9 +24,31 @@ namespace DataCardio_Tests
             int anni = 37;
             int valaspettato = 183;
 
-            int val = 0;
-            val = CardioTests.CalcoloFrequenzaCardiaca(anni);
-            Assert.AreEqual(valaspettato, val);
+            int finalvalue = 0;
+            finalvalue = DataCardio.CalcoloFrequenzaCardiaca(anni);
+            Assert.AreEqual(valaspettato, finalvalue);
+        }
+
+        [TestMethod]
+        public void TestMaxFrequenzaIdeale()
+        {
+            double anni = 19;
+            double maxfrequenzaideale = 180.9;
+
+            double finalvalue = 0;
+            finalvalue = DataCardio.CalcoloMaxFrequenzaIdeale(anni);
+            Assert.AreEqual(maxfrequenzaideale, finalvalue);
+        }
+
+        [TestMethod]
+        public void TestMinFrequenzaIdeale()
+        {
+            double anni = 19;
+            double minfrequenzaideale = 141;
+
+            double finalvalue = 0;
+            finalvalue = DataCardio.CalcoloMinFrequenzaIdeale(anni);
+            Assert.AreEqual(minfrequenzaideale, finalvalue);
         }
     }
 }
