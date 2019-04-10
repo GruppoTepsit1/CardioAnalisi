@@ -63,6 +63,22 @@ namespace CardioLibrary
             }
             return r;
         }
+        public static string Movimento(double peso,double chilometri, string attività)
+        {
+            string r = "";
+            double spesae = 0;
+            if (attività == "corsa")
+            {
+                spesae = 0.9 * chilometri * peso;
+                r = Convert.ToString(spesae);
+            }
+            else
+            {
+                spesae = 0.5 * chilometri * peso;
+                r = Convert.ToString(spesae);
+            }
+            return r;
+        }
     }
 
 }

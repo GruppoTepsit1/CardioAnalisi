@@ -77,5 +77,26 @@ namespace DataCardio_Tests
             
             Assert.AreEqual(RispAsp, i);
         }
+        //test per calcolare la soesa energetica
+        [TestMethod]
+        public void Movimento()
+        {
+            double peso = 70, chilometri = 4;
+            string attività = "corsa";
+            string RispAsp = "252";
+            string i = DataCardio.Movimento(peso,chilometri,attività);
+
+            Assert.AreEqual(RispAsp, i);
+        }
+        [TestMethod]
+        public void Movimento1()
+        {
+            double peso = 70, chilometri = 4;
+            string attività = "camminata";
+            string RispAsp = "140";
+            string i = DataCardio.Movimento(peso, chilometri, attività);
+
+            Assert.AreEqual(RispAsp, i);
+        }
     }
 }
