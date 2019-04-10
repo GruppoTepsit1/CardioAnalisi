@@ -9,10 +9,10 @@ namespace CardioLibrary
 {
     public static class DataCardio
     {
-        public static double frequenza1(double età)
+        public static double frequenza1(double eta)
         {
 
-            double risposta = 220 - età;
+            double risposta = 220 - eta;
 
             return risposta;
         }
@@ -42,6 +42,26 @@ namespace CardioLibrary
             }
             
             return risposta;
+        }
+        public static string EserciziM(double frequenza, double peso, double età, double tempo, string sesso)
+        {
+            string r="";
+            if (sesso == "M")
+            {    double caloriebruciate;
+            
+            caloriebruciate = (età * 0.2017 + peso * 0.199 + frequenza * 0.6309 - 55.0969) * tempo / 4.184;
+            r = Convert.ToString(caloriebruciate);
+            
+            }
+            else
+            {
+                double caloriebruciate;
+
+                caloriebruciate = (età * 0.074 + peso * 0.126 + frequenza * 0.4472 - 20.4022) * tempo / 4.184;
+                r = Convert.ToString(caloriebruciate);
+
+            }
+            return r;
         }
     }
 

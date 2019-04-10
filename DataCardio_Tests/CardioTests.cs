@@ -58,6 +58,24 @@ namespace DataCardio_Tests
             string i = DataCardio.Normale1(frequenza);
             Assert.AreEqual(risposta, i);
         }
-
+        //test per calcolare le calorie bruciate durante le sessioni di esercizio
+        [TestMethod]
+        public void EserciziM()
+        {
+            double frequenza = 104, peso = 70, eta = 26, tempo = 36;
+            string RispAsp = "255,466634799235", sesso="M";
+            string i = DataCardio.EserciziM(frequenza,peso,eta,tempo,sesso);
+    
+            Assert.AreEqual(RispAsp,i);
+        }
+        [TestMethod]
+        public void EserciziM1()
+        {
+            double frequenza = 104, peso = 70, eta = 26, tempo = 36;
+            string RispAsp = "317,07017208413", sesso = "F";
+            string i = DataCardio.EserciziM(frequenza, peso, eta, tempo, sesso);
+            
+            Assert.AreEqual(RispAsp, i);
+        }
     }
 }
