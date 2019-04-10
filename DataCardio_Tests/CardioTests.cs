@@ -42,6 +42,22 @@ namespace DataCardio_Tests
             string i = DataCardio.Normale1(frequenza);
             Assert.AreEqual(risposta, i);
         }
+        [TestMethod]
+        public void Testriposo2()
+        {
+            double frequenza = 100;
+            string risposta = "Normale";
+            string i = DataCardio.Normale1(frequenza);
+            Assert.AreEqual(risposta, i);
+        }
+        [TestMethod]
+        public void Testriposo3()
+        {
+            double frequenza = 54;
+            string risposta = "Bradicardia";
+            string i = DataCardio.Normale1(frequenza);
+            Assert.AreEqual(risposta, i);
+        }
 
     }
 }
