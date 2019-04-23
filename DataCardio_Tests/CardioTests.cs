@@ -81,13 +81,33 @@ namespace DataCardio_Tests
 
         //test di verifica delle calorie bruciate durante un allenamento
         [TestMethod]
-        public void TestCalorieBruciateM()
+        public void TestCalorieBruciate1()
         {
-            double frequenza = 190, peso = 60, età = 30, tempo = 45;
-            string sesso = "M";
-            string risposta = "Bradicardia";
-            string i = DataCardio.Esercizi(frequenza, peso, età, tempo, sesso);
-            Assert.AreEqual(risposta, i);
+            double frequenza = 176, peso = 80, eta = 24, tempo = 30;
+            string RispAsp = "549,9708", sesso = "M";
+            string i = DataCardio.Esercizi(frequenza, peso, eta, tempo, sesso);
+
+            Assert.AreEqual(RispAsp, i);
+        }
+
+        [TestMethod]
+        public void TestCalorieBruciate2()
+        {
+            double frequenza = 182, peso = 65, eta = 17, tempo = 30;
+            string RispAsp = "545,5863", sesso = "M";
+            string i = DataCardio.Esercizi(frequenza, peso, eta, tempo, sesso);
+
+            Assert.AreEqual(RispAsp, i);
+        }
+
+        [TestMethod]
+        public void TestCalorieBruciate3()
+        {
+            double frequenza = 182, peso = 65, eta = 17, tempo = 30;
+            string RispAsp = "505,0416", sesso = "F";
+            string i = DataCardio.Esercizi(frequenza, peso, eta, tempo, sesso);
+
+            Assert.AreEqual(RispAsp, i);
         }
     }
 }

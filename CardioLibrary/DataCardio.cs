@@ -54,15 +54,14 @@ namespace CardioLibrary
         //Metodo di calcolo delle calorie bruciate in un allenamento
         public static string Esercizi(double frequenza, double peso, double età, double tempo, string sesso)
         {
-            string Calorie = "";
+            double Calorie = 0;
             if (sesso == "M")
             {
                 double caloriebruciate;
                 double T = Math.Round(tempo / 4.184, 4);
 
                 caloriebruciate = ((età * 0.2017) + (peso * 0.199) + (frequenza * 0.6309) - 55.0969) * T;
-                Calorie = Convert.ToString(caloriebruciate);
-
+                Calorie = caloriebruciate;
             }
             else
             {
@@ -70,10 +69,10 @@ namespace CardioLibrary
                 double T = Math.Round(tempo / 4.184, 4);
                
                 caloriebruciate = ((età * 0.074) + (peso * 0.126) + (frequenza * 0.4472) - 20.4022) * T;
-                Calorie = Convert.ToString(caloriebruciate);
+                Calorie = caloriebruciate;
             }
-            double i = Math.Round(Calorie, 4);
-            return 
+            string i = Convert.ToString(Math.Round(Calorie, 4));
+            return i;
         }
 
         public static string Movimento(double peso, double chilometri, string attività)
