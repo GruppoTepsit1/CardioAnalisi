@@ -75,20 +75,24 @@ namespace CardioLibrary
             return i;
         }
 
-        public static string Movimento(double peso, double chilometri, string attività)
+        //Metodo che calcola la spesa energetica nella corsa e nella camminata
+        public static string MovCorsa(double peso, double chilometri)
         {
             string Calorie = "";
             double SpesaEnergetica = 0;
-            if (attività == "corsa")
-            {
-                SpesaEnergetica = 0.9 * chilometri * peso;
-                Calorie = Convert.ToString(SpesaEnergetica);
-            }
-            else
-            {
-                SpesaEnergetica = 0.5 * chilometri * peso;
-                Calorie = Convert.ToString(SpesaEnergetica);
-            }
+            SpesaEnergetica = 0.9 * chilometri * peso;
+            Calorie = Convert.ToString(SpesaEnergetica);
+
+            return Calorie;
+        }
+
+        public static string MovCamminata(double peso, double chilometri)
+        {
+            string Calorie = "";
+            double SpesaEnergetica = 0;
+            SpesaEnergetica = 0.5 * chilometri * peso;
+            Calorie = Convert.ToString(SpesaEnergetica);
+
             return Calorie;
         }
     }

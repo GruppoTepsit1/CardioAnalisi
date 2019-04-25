@@ -57,8 +57,8 @@ namespace DataCardio_Tests
         {
             double frequenza = 200;
             string risposta = "Tachicardia";
-            string i = DataCardio.CalcoloFrequenzaRiposo(frequenza);
-            Assert.AreEqual(risposta, i);
+            string finalvalue = DataCardio.CalcoloFrequenzaRiposo(frequenza);
+            Assert.AreEqual(risposta, finalvalue);
         }
 
         [TestMethod]
@@ -66,8 +66,8 @@ namespace DataCardio_Tests
         {
             double frequenza = 100;
             string risposta = "Normale";
-            string i = DataCardio.CalcoloFrequenzaRiposo(frequenza);
-            Assert.AreEqual(risposta, i);
+            string finalvalue = DataCardio.CalcoloFrequenzaRiposo(frequenza);
+            Assert.AreEqual(risposta, finalvalue);
         }
 
         [TestMethod]
@@ -75,8 +75,8 @@ namespace DataCardio_Tests
         {
             double frequenza = 54;
             string risposta = "Bradicardia";
-            string i = DataCardio.CalcoloFrequenzaRiposo(frequenza);
-            Assert.AreEqual(risposta, i);
+            string finalvalue = DataCardio.CalcoloFrequenzaRiposo(frequenza);
+            Assert.AreEqual(risposta, finalvalue);
         }
 
         //test di verifica delle calorie bruciate durante un allenamento
@@ -85,9 +85,9 @@ namespace DataCardio_Tests
         {
             double frequenza = 176, peso = 80, eta = 24, tempo = 30;
             string RispAsp = "549,9708", sesso = "M";
-            string i = DataCardio.Esercizi(frequenza, peso, eta, tempo, sesso);
+            string finalvalue = DataCardio.Esercizi(frequenza, peso, eta, tempo, sesso);
 
-            Assert.AreEqual(RispAsp, i);
+            Assert.AreEqual(RispAsp, finalvalue);
         }
 
         [TestMethod]
@@ -95,9 +95,9 @@ namespace DataCardio_Tests
         {
             double frequenza = 182, peso = 65, eta = 17, tempo = 30;
             string RispAsp = "545,5863", sesso = "M";
-            string i = DataCardio.Esercizi(frequenza, peso, eta, tempo, sesso);
+            string finalvalue = DataCardio.Esercizi(frequenza, peso, eta, tempo, sesso);
 
-            Assert.AreEqual(RispAsp, i);
+            Assert.AreEqual(RispAsp, finalvalue);
         }
 
         [TestMethod]
@@ -105,9 +105,83 @@ namespace DataCardio_Tests
         {
             double frequenza = 182, peso = 65, eta = 17, tempo = 30;
             string RispAsp = "505,0416", sesso = "F";
-            string i = DataCardio.Esercizi(frequenza, peso, eta, tempo, sesso);
+            string finalvalue = DataCardio.Esercizi(frequenza, peso, eta, tempo, sesso);
 
-            Assert.AreEqual(RispAsp, i);
+            Assert.AreEqual(RispAsp, finalvalue);
+        }
+
+        //Test per verificare le calorie bruciate in una camminata
+        [TestMethod]
+        public void TestCalorieCamminata1()
+        {
+            double peso = 69;
+            double chilometri = 7;
+
+            string RispAsp = "241,5";
+            string finalvalue = DataCardio.MovCamminata(peso, chilometri);
+
+            Assert.AreEqual(RispAsp, finalvalue);
+        }
+        
+        [TestMethod]
+        public void TestCalorieCamminata2()
+        {
+            double peso = 73;
+            double chilometri = 7;
+
+            string RispAsp = "255,5";
+            string finalvalue = DataCardio.MovCamminata(peso, chilometri);
+
+            Assert.AreEqual(RispAsp, finalvalue);
+        }
+
+        [TestMethod]
+        public void TestCalorieCamminata3()
+        {
+            double peso = 59.4;
+            double chilometri = 4.6;
+
+            string RispAsp = "136,62";
+            string finalvalue = DataCardio.MovCamminata(peso, chilometri);
+
+            Assert.AreEqual(RispAsp, finalvalue);
+        }
+
+        //Test per verificare le calorie bruciate in una corsa
+        [TestMethod]
+        public void TestCalorieCorsa1()
+        {
+            double peso = 78;
+            double chilometri = 5;
+
+            string RispAsp = "351";
+            string finalvalue = DataCardio.MovCorsa(peso, chilometri);
+
+            Assert.AreEqual(RispAsp, finalvalue);
+        }
+
+        [TestMethod]
+        public void TestCalorieCorsa2()
+        {
+            double peso = 68.2;
+            double chilometri = 6.9;
+
+            string RispAsp = "423,522";
+            string finalvalue = DataCardio.MovCorsa(peso, chilometri);
+
+            Assert.AreEqual(RispAsp, finalvalue);
+        }
+
+        [TestMethod]
+        public void TestCalorieCorsa3()
+        {
+            double peso = 84.3;
+            double chilometri = 2.8;
+
+            string RispAsp = "212,436";
+            string finalvalue = DataCardio.MovCorsa(peso, chilometri);
+
+            Assert.AreEqual(RispAsp, finalvalue);
         }
     }
 }
