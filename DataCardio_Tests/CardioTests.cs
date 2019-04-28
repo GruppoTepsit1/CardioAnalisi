@@ -183,5 +183,36 @@ namespace DataCardio_Tests
 
             Assert.AreEqual(RispAsp, finalvalue);
         }
+
+        //Test media battiti cardiaci
+        [TestMethod]
+        public void TestMediaBattitiCardiaci1()
+        {
+            int[] BattitiGiornalieri = new int[] { 67, 60, 60, 60, 60, 60, 60, 70, 75, 80, 60, 90, 120, 192, 78, 84, 97, 68, 100, 110, 145, 60, 67, 64 };
+            double finalvalue = DataCardio.MediaBattiti(BattitiGiornalieri);
+
+            double RispAsp = 82;
+            Assert.AreEqual(RispAsp, finalvalue);
+        }
+
+        [TestMethod]
+        public void TestMediaBattitiCardiaci2()
+        {
+            int[] BattitiGiornalieri = new int[] { 80, 75, 74, 78, 60, 64, 65, 68, 67, 69, 68, 78, 98, 94, 120, 145, 167, 193, 170, 68, 67, 66, 90, 75 };
+            double finalvalue = DataCardio.MediaBattiti(BattitiGiornalieri);
+
+            double RispAsp = 91;
+            Assert.AreEqual(RispAsp, finalvalue);
+        }
+
+        [TestMethod]
+        public void TestMediaBattitiCardiaci3()
+        {
+            int[] BattitiGiornalieri = new int[] { 80, 98, 65, 75, 68, 120, 145, 170, 86, 97, 68, 67, 80, 183, 120, 190, 67, 83, 74, 71, 62, 68, 67, 60 };
+            double finalvalue = DataCardio.MediaBattiti(BattitiGiornalieri);
+
+            double RispAsp = 94;
+            Assert.AreEqual(RispAsp, finalvalue);
+        }
     }
 }

@@ -95,5 +95,18 @@ namespace CardioLibrary
 
             return Calorie;
         }
+
+        //Metodo di calcolo della media giornaliera dei battiti cardiaci
+        public static double MediaBattiti(int[] BattitiGiornalieri)
+        {
+            int somma = 0;
+            for (int i = 0; i < BattitiGiornalieri.Length; i++)
+            {
+                somma += BattitiGiornalieri[i];
+            }
+
+            double media = somma / BattitiGiornalieri.Length;
+            return media;
+        }
     }
 }
