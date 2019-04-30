@@ -7,7 +7,7 @@ namespace DataCardio_Tests
     [TestClass]
     public class CardioTests
     {
-        //test per verificare la frequenza massima in base all'età di una persona
+        //Test per verificare la frequenza massima in base all'età di una persona
         [TestMethod]
         public void TestBattitoCardiaco()
         {
@@ -30,7 +30,7 @@ namespace DataCardio_Tests
             Assert.AreEqual(valaspettato, finalvalue);
         }
 
-        //tests per verificare lafrequenza massima e minima ideale durante un'allenamnto
+        //Tests per verificare lafrequenza massima e minima ideale durante un'allenamnto
         [TestMethod]
         public void TestMaxFrequenzaIdeale()
         {
@@ -52,7 +52,7 @@ namespace DataCardio_Tests
             Assert.AreEqual(minfrequenzaideale, finalvalue);
         }
 
-        //tests che verifica se una persona è bradicardiaca, normale o tachicardiaca
+        //Tests che verifica se una persona è bradicardiaca, normale o tachicardiaca
         public void TestRiposoTachicardiaco()
         {
             double frequenza = 200;
@@ -79,7 +79,7 @@ namespace DataCardio_Tests
             Assert.AreEqual(risposta, finalvalue);
         }
 
-        //test di verifica delle calorie bruciate durante un allenamento
+        //Test di verifica delle calorie bruciate durante un allenamento
         [TestMethod]
         public void TestCalorieBruciate1()
         {
@@ -212,6 +212,59 @@ namespace DataCardio_Tests
             double finalvalue = DataCardio.MediaBattiti(BattitiGiornalieri);
 
             double RispAsp = 94;
+            Assert.AreEqual(RispAsp, finalvalue);
+        }
+
+        //Test per verificare il battito a riposo
+        [TestMethod]
+        public void TestBattitoRiposo1()
+        {
+            int[] Battiti = new int[] { 95, 60, 61, 94, 72, 60 };
+            double finalvalue = DataCardio.BattitoRiposo(Battiti);
+
+            double RispAsp = 60;
+            Assert.AreEqual(RispAsp, finalvalue);
+        }
+
+        [TestMethod]
+        public void TestBattitoRiposo2()
+        {
+            int[] Battiti = new int[] { 120, 87, 94, 82, 73, 76 };
+            double finalvalue = DataCardio.BattitoRiposo(Battiti);
+
+            double RispAsp = 73;
+            Assert.AreEqual(RispAsp, finalvalue);
+        }
+
+        //Metodo per verificare la variazione dei battiti
+        [TestMethod]
+        public void TestVariazioneBattito1()
+        {
+            int[] Battiti = new int[] { 120, 87, 94, 82, 73, 76 };
+            double finalvalue = DataCardio.VariazioneBattito(Battiti);
+
+            double RispAsp = 47;
+            Assert.AreEqual(RispAsp, finalvalue);
+        }
+
+        [TestMethod]
+        public void TestVariazioneBattito2()
+        {
+            int[] Battiti = new int[] { 193, 75, 68, 81, 91, 84 };
+            double finalvalue = DataCardio.VariazioneBattito(Battiti);
+
+            double RispAsp = 125;
+            Assert.AreEqual(RispAsp, finalvalue);
+        }
+
+        //Test per verificare il riordinamento dei battiti
+        [TestMethod]
+        public void TestRiordinamentoBattiti1()
+        {
+            int[] Battiti = new int[] { 83, 60, 187, 94, 60 };
+            int[] finalvalue = DataCardio.Riordinamento(Battiti);
+
+            int[] RispAsp = Battiti;
             Assert.AreEqual(RispAsp, finalvalue);
         }
     }

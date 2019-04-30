@@ -108,5 +108,46 @@ namespace CardioLibrary
             double media = somma / BattitiGiornalieri.Length;
             return media;
         }
+
+        //Metodo di calcolo del battito a riposo in un array
+        public static double BattitoRiposo(int[] Battiti)
+        {
+            int min = Battiti[0];
+            for (int i = 0; i < Battiti.Length; i++)
+            {
+                if (min > Battiti[i])
+                {
+                    min = Battiti[i];
+                }
+            }
+            return min;
+        }
+
+        //Metodo di calcolo della variabilità del battito caridaco
+        public static double VariazioneBattito(int[] Battiti)
+        {
+            int min = Battiti[0], max = Battiti[0];
+            for (int i = 0; i < Battiti.Length; i++)
+            {
+                if (min > Battiti[i])
+                {
+                    min = Battiti[i];
+                }
+
+                if (max < Battiti[i])
+                {
+                    max = Battiti[i];
+                }
+            }
+            int variazione = max - min;
+            return variazione;
+        }
+
+        //Metodo di riordinamento dell'array
+        public static int[] Riordinamento(int[] Battiti)
+        {
+            Array.Sort(Battiti);
+            return Battiti;
+        }
     }
 }
