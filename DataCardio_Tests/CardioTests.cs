@@ -267,5 +267,15 @@ namespace DataCardio_Tests
             int[] RispAsp = Battiti;
             Assert.AreEqual(RispAsp, finalvalue);
         }
+        
+        //Test per verificare se una persona ha recuperato
+        [TestMethod]
+        public void TestRecupero()
+        {
+            int[] battiti = new int[] { 120, 106, 100, 94, 89, 85 };
+            string rispAsp = "ha recuperato";
+            string finalvalue = DataCardio.Riposo(battiti);
+            Assert.AreEqual(rispAsp, finalvalue);
+        }
     }
 }
