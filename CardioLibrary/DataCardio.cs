@@ -147,5 +147,20 @@ namespace CardioLibrary
             Array.Sort(Battiti);
             return Battiti;
         }
+
+        //Recupero
+        public static string Riposo(int[] battiti)
+        {
+            string risposta = "";
+            if (battiti[5] < 90)
+            {
+                risposta = "ha recuperato";
+            }
+            else
+            {
+                risposta = "non ha recuperato";
+            }
+            return risposta;
+        }
     }
 }
