@@ -11,40 +11,56 @@ namespace DataCardio_Tests
         [TestMethod]
         public void TestFrequenza1()
         {
-            double età = 20, frequenza = 200;
-
-            double i = DataCardio.Frequenza(età);
+            double età = 20;
+            string frequenza = "200";
+            string i = DataCardio.Frequenza(età);
             Assert.AreEqual(frequenza, i);
         }
 
         [TestMethod]
         public void TestFrequenza2()
         {
-            double età = 50, frequenza = 170;
+            double età = -5;
+            string frequenza = "impossibile";
 
-            double i = DataCardio.Frequenza(età);
+            string i = DataCardio.Frequenza(età);
             Assert.AreEqual(frequenza, i);
         }
 
         //Tests per verificare lafrequenza massima e minima ideale durante un'allenamnto
         [TestMethod]
-        public void TestMaxFrequenzaIdeale()
+        public void TestMaxFrequenzaIdeale1()
         {
             double anni = 24;
-            double maxfrequenzaideale = 176.4;
-            double finalvalue = 0;
-            finalvalue = DataCardio.CalcoloMaxFrequenzaIdeale(anni);
+            string maxfrequenzaideale = "176,4";
+            string finalvalue = DataCardio.CalcoloMaxFrequenzaIdeale(anni);
             Assert.AreEqual(maxfrequenzaideale, finalvalue);
         }
 
         [TestMethod]
-        public void TestMinFrequenzaIdeale()
+        public void TestMaxFrequenzaIdeale2()
+        {
+            double anni = -7;
+            string maxfrequenzaideale = "impossibile";
+            string finalvalue = DataCardio.CalcoloMaxFrequenzaIdeale(anni);
+            Assert.AreEqual(maxfrequenzaideale, finalvalue);
+        }
+
+        [TestMethod]
+        public void TestMinFrequenzaIdeale1()
         {
             double anni = 24;
-            double minfrequenzaideale = 137.2;
+            string minfrequenzaideale = "137,2";
+            string finalvalue = DataCardio.CalcoloMinFrequenzaIdeale(anni);
+            Assert.AreEqual(minfrequenzaideale, finalvalue);
+        }
 
-            double finalvalue = 0;
-            finalvalue = DataCardio.CalcoloMinFrequenzaIdeale(anni);
+        [TestMethod]
+        public void TestMinFrequenzaIdeale2()
+        {
+            double anni = -24;
+            string minfrequenzaideale = "impossibile";
+            string finalvalue = DataCardio.CalcoloMinFrequenzaIdeale(anni);
             Assert.AreEqual(minfrequenzaideale, finalvalue);
         }
 
@@ -73,6 +89,15 @@ namespace DataCardio_Tests
         {
             double frequenza = 54;
             string risposta = "Bradicardia";
+            string i = DataCardio.FrequenzaRiposo(frequenza);
+            Assert.AreEqual(risposta, i);
+        }
+
+        [TestMethod]
+        public void Testriposo4()
+        {
+            double frequenza = -50;
+            string risposta = "impossibile";
             string i = DataCardio.FrequenzaRiposo(frequenza);
             Assert.AreEqual(risposta, i);
         }
@@ -235,11 +260,12 @@ namespace DataCardio_Tests
         [TestMethod]
         public void TestRiordinamentoBattiti1()
         {
-            int[] Battiti = new int[] { 83, 60, 187, 94, 60 };
+            int[] Battiti = new int[] { 83, 60, 187, 94, 67 };
             int[] finalvalue = DataCardio.Riordinamento(Battiti);
 
-            int[] RispAsp = Battiti;
-            Assert.AreEqual(RispAsp, finalvalue);
+            int[] RispAsp = new int[] { 60, 67, 83, 94, 187 };
+
+            CollectionAssert.AreEqual(RispAsp, finalvalue);
         }
     }
 }

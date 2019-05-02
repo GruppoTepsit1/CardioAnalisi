@@ -10,42 +10,84 @@ namespace CardioLibrary
     public static class DataCardio
     {
         //Metodo per calcolare la frequenza massima
-        public static double Frequenza(double eta)
+        public static string Frequenza(double eta)
         {
-            double risposta = 220 - eta;
-            return risposta;
+            double risposta = 0;
+            string risp = "";
+            if (eta > 0)
+            {
+                risposta = 220 - eta;
+                risp = Convert.ToString(risposta);
+            }
+            else
+            {
+                risp = "impossibile";
+            }
+
+            return risp;
         }
 
         //Metodo di calcolo della frequenza massima ideale in allenamento
-        public static double CalcoloMaxFrequenzaIdeale(double anni)
+        public static string CalcoloMaxFrequenzaIdeale(double anni)
         {
+
             double frequenza = 220;
-            frequenza = frequenza - anni;
-            double ideale = (frequenza / 100) * 90;
-            return ideale;
+            string risp = "";
+
+            if (anni < 0)
+            {
+                risp = "impossibile";
+            }
+            else
+            {
+                frequenza = frequenza - anni;
+                double ideale = (frequenza / 100) * 90;
+                risp = Convert.ToString(ideale);
+            }
+            
+
+            return risp;
         }
 
         //Metodo di calcolo della frequenza minima ideale in allenamento
-        public static double CalcoloMinFrequenzaIdeale(double anni)
+        public static string CalcoloMinFrequenzaIdeale(double anni)
         {
             double frequenza = 220;
-            frequenza = frequenza - anni;
-            double ideale = (frequenza / 100) * 70;
-            return ideale;
+            string risp = "";
+
+            if (anni < 0)
+            {
+                risp = "impossibile";
+            }
+            else
+            {
+                frequenza = frequenza - anni;
+                double ideale = (frequenza / 100) * 70;
+                risp = Convert.ToString(ideale);
+            }
+            return risp;
         }
 
         ////Metodo per interpretare i valori della frequenza cardiaca a riposo
         public static string FrequenzaRiposo(double frequenza)
         {
             string risposta = "Normale";
-            if (frequenza < 60)
+            if (frequenza < 60 && frequenza > 0)
             {
                 risposta = "Bradicardia";
+            }
+             if (frequenza <= 0)
+            {
+                risposta = "impossibile";
+            
             }
             if (frequenza > 100)
             {
                 risposta = "Tachicardia";
             }
+            
+                
+            
             return risposta;
         }
 
@@ -144,7 +186,20 @@ namespace CardioLibrary
         //Metodo di riordinamento dell'array
         public static int[] Riordinamento(int[] Battiti)
         {
-            Array.Sort(Battiti);
+            int n = Battiti.Length;
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = i + 1; j < n; j++)
+                {
+                    if (Battiti[j] < Battiti[i])
+                    {
+                        int temp = Battiti[i];
+                        Battiti[i] = Battiti[j];
+                        Battiti[j] = temp;
+                    }
+                }
+            }
             return Battiti;
         }
 
