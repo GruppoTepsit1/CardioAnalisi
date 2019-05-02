@@ -76,7 +76,7 @@ namespace CardioLibrary
             {
                 risposta = "Bradicardia";
             }
-             if (frequenza <= 0)
+            if (frequenza <= 0)
             {
                 risposta = "impossibile";
             
@@ -85,9 +85,6 @@ namespace CardioLibrary
             {
                 risposta = "Tachicardia";
             }
-            
-                
-            
             return risposta;
         }
 
@@ -95,6 +92,7 @@ namespace CardioLibrary
         public static string Esercizi(double frequenza, double peso, double età, double tempo, string sesso)
         {
             double Calorie = 0;
+            string FinalValue = "";
             if (sesso == "M")
             {
                 double caloriebruciate;
@@ -102,6 +100,8 @@ namespace CardioLibrary
 
                 caloriebruciate = ((età * 0.2017) + (peso * 0.199) + (frequenza * 0.6309) - 55.0969) * T;
                 Calorie = caloriebruciate;
+
+                FinalValue = Convert.ToString(Math.Round(Calorie, 4));
             }
             else
             {
@@ -110,18 +110,32 @@ namespace CardioLibrary
 
                 caloriebruciate = ((età * 0.074) + (peso * 0.126) + (frequenza * 0.4472) - 20.4022) * T;
                 Calorie = caloriebruciate;
+
+                FinalValue = Convert.ToString(Math.Round(Calorie, 4));
             }
-            string i = Convert.ToString(Math.Round(Calorie, 4));
-            return i;
+
+
+            if (frequenza < 45 || peso <= 0 || età <= 0 || tempo <= 0)
+            {
+                FinalValue = "impossibile";
+            }
+            return FinalValue;
         }
 
         //Metodo che calcola la spesa energetica nella corsa e nella camminata
         public static string MovCorsa(double peso, double chilometri)
         {
             string Calorie = "";
-            double SpesaEnergetica = 0;
-            SpesaEnergetica = 0.9 * chilometri * peso;
-            Calorie = Convert.ToString(SpesaEnergetica);
+            if (peso <= 0 || chilometri <= 0)
+            {
+                Calorie = "impossibile";
+            }
+            else
+            {
+                double SpesaEnergetica = 0;
+                SpesaEnergetica = 0.9 * chilometri * peso;
+                Calorie = Convert.ToString(SpesaEnergetica);
+            }
 
             return Calorie;
         }
@@ -129,24 +143,45 @@ namespace CardioLibrary
         public static string MovCamminata(double peso, double chilometri)
         {
             string Calorie = "";
-            double SpesaEnergetica = 0;
-            SpesaEnergetica = 0.5 * chilometri * peso;
-            Calorie = Convert.ToString(SpesaEnergetica);
+            if (peso <= 0 || chilometri <= 0)
+            {
+                Calorie = "impossibile";
+            }
+            else
+            {
+                double SpesaEnergetica = 0;
+                SpesaEnergetica = 0.5 * chilometri * peso;
+                Calorie = Convert.ToString(SpesaEnergetica);
+            }
 
             return Calorie;
         }
 
         //Metodo di calcolo della media giornaliera dei battiti cardiaci
-        public static double MediaBattiti(int[] BattitiGiornalieri)
+        public static string MediaBattiti(int[] BattitiGiornalieri)
         {
             int somma = 0;
+            bool flag = false;
+            string FinalRisp = "";
+
             for (int i = 0; i < BattitiGiornalieri.Length; i++)
             {
-                somma += BattitiGiornalieri[i];
+                if (BattitiGiornalieri[i] < 45)
+                    flag = true;
+                else
+                    somma += BattitiGiornalieri[i];
             }
 
-            double media = somma / BattitiGiornalieri.Length;
-            return media;
+            if (flag == true)
+            {
+                FinalRisp = "impossibile";
+            }
+            else
+            {
+                double media = somma / BattitiGiornalieri.Length;
+                FinalRisp = Convert.ToString(media);
+            }
+            return FinalRisp;
         }
 
         //Metodo di calcolo del battito a riposo in un array
