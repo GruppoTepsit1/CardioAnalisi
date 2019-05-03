@@ -185,23 +185,38 @@ namespace CardioLibrary
         }
 
         //Metodo di calcolo del battito a riposo in un array
-        public static double BattitoRiposo(int[] Battiti)
+        public static string BattitoRiposo(int[] Battiti)
         {
             int min = Battiti[0];
+            string FinalValue = "";
+            bool flag = false;
             for (int i = 0; i < Battiti.Length; i++)
             {
                 if (min > Battiti[i])
                 {
                     min = Battiti[i];
                 }
+                if (Battiti[i] < 45)
+                {
+                    flag = true;
+                }
             }
-            return min;
+            FinalValue = Convert.ToString(min);
+            if (flag == true)
+            {
+                FinalValue = "impossibile";
+            }
+            
+            return FinalValue;
         }
 
         //Metodo di calcolo della variabilità del battito caridaco
-        public static double VariazioneBattito(int[] Battiti)
+        public static string VariazioneBattito(int[] Battiti)
         {
             int min = Battiti[0], max = Battiti[0];
+            string FinalValue = "";
+            bool flag = false;
+
             for (int i = 0; i < Battiti.Length; i++)
             {
                 if (min > Battiti[i])
@@ -213,9 +228,20 @@ namespace CardioLibrary
                 {
                     max = Battiti[i];
                 }
+
+                if (Battiti[i] < 45)
+                {
+                    flag = true;
+                }
             }
             int variazione = max - min;
-            return variazione;
+            FinalValue = Convert.ToString(variazione);
+
+            if (flag == true)
+            {
+                FinalValue = "impossibile";
+            }
+            return FinalValue;
         }
 
         //Metodo di riordinamento dell'array
@@ -238,17 +264,25 @@ namespace CardioLibrary
             return Battiti;
         }
 
-        //Recupero
-        public static string Riposo(int[] battiti)
+        //Metodo per verificare se una persona abbia recuperato
+        public static string Recupero(int[] Battiti)
         {
             string risposta = "";
-            if (battiti[5] < 90)
+            if (Battiti[5] < 90)
             {
                 risposta = "ha recuperato";
             }
             else
             {
                 risposta = "non ha recuperato";
+            }
+
+            for (int i = 0; i < Battiti.Length; i++)
+            {
+                if (Battiti[i] < 45)
+                {
+                    risposta = "impossibile";
+                }
             }
             return risposta;
         }

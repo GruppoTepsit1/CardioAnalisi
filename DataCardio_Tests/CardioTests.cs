@@ -219,19 +219,19 @@ namespace DataCardio_Tests
         public void TestBattitoRiposo1()
         {
             int[] Battiti = new int[] { 95, 60, 61, 94, 72, 60 };
-            double finalvalue = DataCardio.BattitoRiposo(Battiti);
+            string finalvalue = DataCardio.BattitoRiposo(Battiti);
 
-            double RispAsp = 60;
+            string RispAsp = "60";
             Assert.AreEqual(RispAsp, finalvalue);
         }
 
         [TestMethod]
         public void TestBattitoRiposo2()
         {
-            int[] Battiti = new int[] { 120, 87, 94, 82, 73, 76 };
-            double finalvalue = DataCardio.BattitoRiposo(Battiti);
+            int[] Battiti = new int[] { 120, -17, 94, 82, 73, 76 };
+            string finalvalue = DataCardio.BattitoRiposo(Battiti);
 
-            double RispAsp = 73;
+            string RispAsp = "impossibile";
             Assert.AreEqual(RispAsp, finalvalue);
         }
 
@@ -240,19 +240,19 @@ namespace DataCardio_Tests
         public void TestVariazioneBattito1()
         {
             int[] Battiti = new int[] { 120, 87, 94, 82, 73, 76 };
-            double finalvalue = DataCardio.VariazioneBattito(Battiti);
+            string finalvalue = DataCardio.VariazioneBattito(Battiti);
 
-            double RispAsp = 47;
+            string RispAsp = "47";
             Assert.AreEqual(RispAsp, finalvalue);
         }
 
         [TestMethod]
         public void TestVariazioneBattito2()
         {
-            int[] Battiti = new int[] { 193, 75, 68, 81, 91, 84 };
-            double finalvalue = DataCardio.VariazioneBattito(Battiti);
+            int[] Battiti = new int[] { 193, 75, 68, 81, 91, 0 };
+            string finalvalue = DataCardio.VariazioneBattito(Battiti);
 
-            double RispAsp = 125;
+            string RispAsp = "impossibile";
             Assert.AreEqual(RispAsp, finalvalue);
         }
 
@@ -266,6 +266,34 @@ namespace DataCardio_Tests
             int[] RispAsp = new int[] { 60, 67, 83, 94, 187 };
 
             CollectionAssert.AreEqual(RispAsp, finalvalue);
+        }
+
+        //Test recupero
+        [TestMethod]
+        public void TestRecupero1()
+        {
+            int[] battiti = new int[] { 120, 106, 100, 94, 89, 85 };
+            string rispAsp = "ha recuperato";
+            string i = DataCardio.Recupero(battiti);
+            Assert.AreEqual(rispAsp, i);
+        }
+
+        [TestMethod]
+        public void TestRecupero2()
+        {
+            int[] battiti = new int[] { 192, 165, 143, 122, 107, 95 };
+            string rispAsp = "non ha recuperato";
+            string i = DataCardio.Recupero(battiti);
+            Assert.AreEqual(rispAsp, i);
+        }
+
+        [TestMethod]
+        public void TestRecupero3()
+        {
+            int[] battiti = new int[] { 150, 130, 100, 12, 75, 64 };
+            string rispAsp = "impossibile";
+            string i = DataCardio.Recupero(battiti);
+            Assert.AreEqual(rispAsp, i);
         }
     }
 }
